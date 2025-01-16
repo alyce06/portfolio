@@ -1,0 +1,10 @@
+html{
+	padding: 0;
+	margin: 0;
+	background-image: url("construc.jpg");
+}
+
+h1,p{
+	text-align: center;
+}
+
