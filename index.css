@@ -3,13 +3,18 @@
 
 html, body {
     font-family: "K2D", sans-serif;
-    height: 100%;
+    /* On enlève height: 100% qui peut poser problème sur mobile */
     line-height: 1.6;
     margin: 0;
     padding: 0;
     background-color: #ffffff;
-    color: #ff435f; /* portfolio-dark */
-    overflow: hidden;
+    color: #ff435f;
+    overflow-x: hidden; /* Empêche le scroll horizontal (souvent utile) */
+    overflow-y: auto;   /* Autorise le scroll vertical */
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 header {
