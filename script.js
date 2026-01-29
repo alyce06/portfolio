@@ -39,14 +39,8 @@ projectLinks.forEach(link => {
     });
 });
 
-const sections = [
-    document.querySelector("header"),
-    document.querySelector("#projets"),
-    document.querySelector("#contact")
-];
 
-let currentSection = 0;
-let isAnimating = false;
+
 
 
 
