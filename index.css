@@ -25,7 +25,7 @@ header {
     align-items: center;
     text-align: center;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     background-image: url("image/Oursin.png");
 }
 
@@ -412,5 +412,14 @@ footer a:hover {
         flex-direction: row;
         justify-content: space-between;
         padding: 1.5rem 4rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    html, body {
+        overflow-y: scroll !important;
+        height: auto !important;
+        position: relative !important;
+        touch-action: auto !important;
     }
 }
