@@ -50,5 +50,3 @@ let isAnimating = false;
 
 
 
-}, { passive: false });
-
