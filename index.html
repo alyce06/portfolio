@@ -1,16 +1,117 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
-
 <head>
-	<meta charset="utf-8"/>
-	<title> alycia-chimard-portfolio </title>
-    <link rel="stylesheet" href="style.css"/>
+    <meta charset="UTF-8" />
+    <meta name="Portfolio" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - Chimard Alycia</title>
+    <link rel="stylesheet" href="index.css" />
+    <script type="importmap">
+        {
+        "imports": {
+            "react": "https://aistudiocdn.com/react@^19.2.0",
+            "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+            "react/": "https://aistudiocdn.com/react@^19.2.0/",
+            "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0"
+        }
+        }
+    </script>
 </head>
 
 <body>
 
-	<h1>En cours de construction</h1>
-    <hr>
-    <p>Revenez bientôt !</p>
+    <header>
+        <div class="background">
+        <h1>CHIMARD ALYCIA</h1>
+        
+        <a href="document/CV-MMI.pdf" target="_blank" rel="noopener" download aria-label="Télécharger mon CV" class="btn-cv">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Mon CV
+        </a>
 
+        <section id="apropos">
+            <h2>À Propos</h2>
+            <p>Étudiante en 2ᵉ année de <b>BUT MMI</b> (métiers du multimédia et de l'internet) à l’Université de Rouen, je m’intéresse à la fois au développement web et à la création artistique.</p>
+            <p>Je suis passionnée par la couture, la broderie, le crochet, le dessin, l’animation 2D/3D, le motion design, la photo, la lecture, et bien d'autres domaines créatifs.</p>
+            <strong>Compétences, Langages, Logiciels</strong>
+            <div class="competences">
+                <span class="skill">JS</span>
+                <span class="skill">PHP</span>
+                <span class="skill">SQL</span>
+                <span class="skill">Blender</span>
+                <span class="skill">Python</span>
+                <span class="skill">Adobe</span>
+            </div>
+        </section>
+        </div>
+    </header>
+    
+    <section id="projets">
+        <!-- Triangle Header (Blanc sur fond sombre) -->
+        <div class="trianglePosition">
+            <div class="triangle triangleBlanc">
+                <h2>PROJETS</h2>
+            </div>
+        </div>
+
+        <div class="contenuProjet">
+            <div class="col-links">
+                <a href="ticolasHome.html" target="_blank" rel="noopener" class="projet" data-project="ticolas">Ticolas’ Home</a>
+                <a href="billeterie.html" target="_blank" rel="noopener" class="projet" data-project="billetterie">Billetterie</a>
+                <a href="laBottine.html" target="_blank" rel="noopener" class="projet" data-project="labottine">LaBottine</a>
+            </div>
+
+            <div class="col-preview">
+                <div id="preview-container">
+                    <div id="default-text">
+                        <p class="title">Sélectionnez un projet</p>
+                        <p class="subtitle">Survolez les titres pour voir un aperçu</p>
+                    </div>
+                    <!-- Image qui apparaîtra -->
+                    <img id="preview-image" src="" alt="Aperçu du projet">
+                    
+                    <!-- Décoration -->
+                    <div class="corner-top-left"></div>
+                    <div class="corner-bottom-right"></div>
+                </div>
+            </div>
+
+            <div class="col-links">
+                <a href="ppp.html" target="_blank" rel="noopener" class="projet" data-project="riremedecin">Projet perso et pro</a>
+                <a href="avenirEtudiant.html" target="_blank" rel="noopener" class="projet" data-project="aveniretudiant">AvenirÉtudiant</a>
+                <a href="film.html" target="_blank" rel="noopener" class="projet" data-project="courtmetrage">Court Métrage</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contat">
+        <div id="contact">
+            <div class="trianglePosition">
+                <div class="triangle triangleNoir">
+                    <h2>CONTACTS</h2>
+                </div>
+            </div>
+
+            <div class="contact-links">
+                <a href="mailto:alyciachimard1@gmail.com" class="contact-item">
+				alyciachimard1@gmail.com</a>
+
+                <div class="separator"></div>
+
+                <a href="tel:+33744838428" class="contact-item">07 44 83 84 28</a>
+
+                <div class="separator"></div>
+
+                <a href="https://www.linkedin.com/in/alycia-chimard" target="_blank" class="contact-item">LinkedIn</a>
+            </div>
+        </div>
+
+        <footer>
+            <small>© Alycia Chimard - 2025</small>
+            <a href="condition.html">Mentions légales & Propriété intellectuelle</a>
+        </footer>
+    </section>
+
+    <!-- Script JavaScript -->
+    <script src="script.js"></script>
 </body>
+</html>
