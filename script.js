@@ -48,29 +48,7 @@ const sections = [
 let currentSection = 0;
 let isAnimating = false;
 
-window.addEventListener("wheel", (event) => {
-    event.preventDefault(); // ⛔ bloque le scroll natif
 
-    if (isAnimating) return;
-
-    isAnimating = true;
-
-    if (event.deltaY > 0) {
-        if (currentSection < sections.length - 1) {
-            currentSection++;
-        }
-    } else {
-        if (currentSection > 0) {
-            currentSection--;
-        }
-    }
-
-    sections[currentSection].scrollIntoView({
-        behavior: "smooth"
-    });
-
-    setTimeout(() => {
-        isAnimating = false;
-    }, 800);
 
 }, { passive: false });
+
