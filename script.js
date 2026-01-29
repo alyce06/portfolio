@@ -39,8 +39,41 @@ projectLinks.forEach(link => {
     });
 });
 
+// Ne pas activer le scroll forcé sur les appareils tactiles
+if (!("ontouchstart" in window)) {
+    const sections = [
+        document.querySelector("header"),
+        document.querySelector("#projets"),
+        document.querySelector("#contact")
+    ];
 
+    let currentSection = 0;
+    let isAnimating = false;
 
+    window.addEventListener("wheel", (event) => {
+        event.preventDefault(); // ⛔ bloque le scroll natif sur desktop seulement
 
+        if (isAnimating) return;
 
+        isAnimating = true;
 
+        if (event.deltaY > 0) {
+            if (currentSection < sections.length - 1) {
+                currentSection++;
+            }
+        } else {
+            if (currentSection > 0) {
+                currentSection--;
+            }
+        }
+
+        sections[currentSection].scrollIntoView({
+            behavior: "smooth"
+        });
+
+        setTimeout(() => {
+            isAnimating = false;
+        }, 800);
+
+    }, { passive: false });
+}
