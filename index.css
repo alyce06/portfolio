@@ -8,7 +8,7 @@ html, body {
     margin: 0;
     padding: 0;
     background-color: #ffffff;
-    color: #ff435f;
+    color: #2a2940;
     overflow-x: hidden; /* Empêche le scroll horizontal (souvent utile) */
     overflow-y: auto;   /* Autorise le scroll vertical */
 }
@@ -35,6 +35,7 @@ h1 {
     margin-bottom: 3rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    color: #ff435f;
 }
 
 .btn-cv {
