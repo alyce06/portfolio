@@ -3,14 +3,13 @@
 
 html, body {
     font-family: "K2D", sans-serif;
-    /* On enlève height: 100% qui peut poser problème sur mobile */
     line-height: 1.6;
     margin: 0;
     padding: 0;
     background-color: #ffffff;
     color: #2a2940;
-    overflow-x: hidden; /* Empêche le scroll horizontal (souvent utile) */
-    overflow-y: auto;   /* Autorise le scroll vertical */
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 html {
@@ -43,20 +42,21 @@ h1 {
     align-items: center;
     gap: 0.5rem;
     padding: 0.75rem 2rem;
-    border-radius: 9999px; /* Pill shape */
+    border-radius: 9999px;
     text-decoration: none;
     font-weight: bold;
     font-size: 1.125rem;
     color: var(--dark-blue);
-    background-color: #ffffff;
+    background-color: #ffffff; /* FOND BLANC AJOUTÉ */
     transition: all 0.3s ease;
     margin-bottom: 4rem;
+    border: 1px solid var(--dark-blue); /* Optionnel : ajoute une bordure pour qu'il soit visible sur fond blanc */
 }
 
 .btn-cv:hover {
-    background-color: #ffffff;
+    background-color: #ffffff; /* RESTE BLANC AU SURVOL */
     transform: scale(1.05);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Section A Propos */
@@ -113,7 +113,6 @@ h1 {
     font-weight: bold;
     font-size: 0.9rem;
     cursor: default;
-
     animation: pulse 3s infinite ease-in-out;
 }
 
@@ -123,7 +122,6 @@ h1 {
 .skill:nth-child(4) { animation-delay: 1.5s; }
 .skill:nth-child(5) { animation-delay: 2s; }
 .skill:nth-child(6) { animation-delay: 2.5s; }
-
 
 .skill:hover {
     transform: scale(1.1);
@@ -139,7 +137,6 @@ h1 {
     justify-content: center;
     z-index: 10;
 }
-
 
 .triangle h2 {
     font-family: "Poller One", cursive;
@@ -158,21 +155,19 @@ h1 {
     color: #ffffff;
 }
 
-/* Mobile par défaut */
 .triangle {
     width: 80%;
     max-width: 900px;
-    height: 3rem; /* 🔽 petit sur mobile */
+    height: 3rem;
     clip-path: polygon(50% 80%, 0 0, 100% 0);
     display: flex;
     justify-content: center;
     align-items: flex-start;
 }
 
-/* Tablette & Desktop */
 @media (min-width: 768px) {
     .triangle {
-        height: 6rem; /* 🔼 plus grand sur écran large */
+        height: 6rem;
         clip-path: polygon(50% 100%, 0 0, 100% 0);
     }
 }
@@ -205,7 +200,6 @@ h1 {
     }
 }
 
-/* Liens Projets */
 .col-links {
     display: flex;
     flex-direction: column;
@@ -240,7 +234,6 @@ h1 {
     transform: scale(1.05);
 }
 
-/* Preview Image Area */
 .col-preview {
     width: 100%;
     max-width: 600px;
@@ -275,17 +268,6 @@ h1 {
     padding: 1rem;
 }
 
-#default-text .title {
-    font-family: "Poller One", cursive;
-    font-size: 1.2rem;
-    margin: 0;
-}
-
-#default-text .subtitle {
-    font-size: 0.9rem;
-    margin: 0;
-}
-
 #preview-image {
     position: absolute;
     width: 100%;
@@ -295,7 +277,6 @@ h1 {
     transition: opacity 0.4s ease;
 }
 
-/* Coins dÃ©coratifs */
 .corner-top-left, .corner-bottom-right {
     position: absolute;
     width: 1rem;
@@ -316,7 +297,6 @@ h1 {
     border-width: 0 2px 2px 0;
 }
 
-/* --- CONTACT SECTION --- */
 #contact-wrapper {
     background-color: var(--bg-gray);
     display: flex;
@@ -348,7 +328,7 @@ h1 {
 }
 
 .contact-item {
-
+    display: flex;
     align-items: center;
     gap: 1rem;
     text-decoration: none;
@@ -386,9 +366,8 @@ h1 {
     }
 }
 
-/* FOOTER */
 footer {
-    background-color: var(--light-blue);
+    background-color: #f4f4f4;
     padding: 1.5rem;
     text-align: center;
     display: flex;
