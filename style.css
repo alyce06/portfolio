@@ -1,0 +1,1012 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Sour+Gummy:wght@800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@800&display=swap');
+
+:root {
+    --color-primary: #ff4365;       /* Rose vif / framboise des titres */
+    --color-primary-dark: #cc1e42;  /* Ombre & contour */
+    --color-bg-light: #ffffff;
+    --color-grid-line: rgba(200, 215, 235, 0.4); /* Quadrillage discret */
+    --color-btn-border: #ff758f;
+    --font-bubble: 'Syne', sans-serif;
+    --font-ui: 'Plus Jakarta Sans', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-ui);
+    background-color: var(--color-bg-light);
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* ===================================================
+   1. COUVERTURE / HERO
+   =================================================== */
+
+.hero {
+    min-height: calc(100vh - 60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    padding: 40px 5%;
+    background-color: #fcfdfe;
+    background-image: 
+        linear-gradient(var(--color-grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--color-grid-line) 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+
+/* FEUILLE POST-IT & CV (Gauche) */
+.note {
+    position: relative;
+    width: 320px;
+    height: 452px;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.paper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    transform: rotate(-5deg);
+    border-radius: 4px;
+    box-shadow: 
+        8px 18px 30px rgba(0, 0, 0, 0.15),
+        2px 5px 10px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.paper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.cv-overlay-btn {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.45);
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.paper:hover .cv-overlay-btn {
+    opacity: 1;
+}
+
+/* PINCE DOUBLE CLIP */
+.clip {
+    position: absolute;
+    top: -18px;
+    left: 45%;
+    transform: translateX(-50%) rotate(-4deg);
+    width: 58px;
+    height: 30px;
+    background: linear-gradient(to bottom, #111111 0%, #2c2c2c 30%, #1a1a1a 85%, #050505 100%);
+    border-radius: 3px 3px 0 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35);
+    z-index: 10;
+}
+
+.clip::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 100%;
+    height: 7px;
+    background: linear-gradient(to right, #1a1a1a, #383838, #1a1a1a);
+    border-radius: 0 0 3px 3px;
+}
+
+.wire {
+    position: absolute;
+    top: -26px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25px;
+    height: 33px;
+    border: 3px solid #d4d4d4;
+    border-bottom: none;
+    border-radius: 14px 14px 4px 4px;
+    box-shadow: inset 0 1px 1px #ffffff, 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.wire::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 1px;
+    right: 1px;
+    height: 10px;
+    border-left: 3px solid #a8a8a8;
+    border-right: 3px solid #a8a8a8;
+}
+
+/* TITRES & BOUTONS (Droite) */
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 2;
+}
+
+.content h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    font-family: var(--font-bubble);
+    font-size: clamp(4rem, 6vw, 5.2rem);
+    line-height: 1;
+    color: #ff4365;
+    text-shadow: 
+        4px 5px 2px #cc1e42,
+        8px 5px 10px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    margin-top: 24px;
+}
+
+.content h1 img {
+    width: 45px;
+    height: auto;
+    margin: 15px;
+    z-index: 3;
+    position: relative;
+    display: block;
+}
+
+.subtitle {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #6c757d;
+    margin-bottom: 30px;
+    letter-spacing: 0.5px;
+}
+
+.cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cta .btn {
+    text-decoration: none;
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    background: #ffffff;
+    padding: 10px 24px;
+    border-radius: 50px;
+    border: 1.5px solid var(--color-btn-border);
+    box-shadow: 0 4px 10px rgba(255, 67, 101, 0.1);
+    transition: all 0.25s ease;
+}
+
+.cta .btn:hover {
+    background: var(--color-primary);
+    color: #ffffff;
+    border-color: var(--color-primary);
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 18px rgba(255, 67, 101, 0.25);
+}
+
+/* ===================================================
+   2. CARNET ÉDITORIAL & ONGLETS
+   =================================================== */
+
+.hidden {
+    display: none !important;
+}
+
+.notebook-wrapper {
+    position: relative;
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+/* Onglets du haut */
+.onglets {
+    display: flex;
+    gap: 4px;
+    margin-bottom: -2px;
+    z-index: 2;
+    position: relative;
+    width: calc(100% - 46px);
+}
+
+.onglet {
+    flex: 1;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-family: var(--font-bubble);
+    background-color: #f7f7f7;
+    color: #ff4365;
+    border: 2px solid #e0e0e0;
+    border-bottom: none;
+    border-top-right-radius: 24px;
+    border-top-left-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.onglet.actif {
+    background-color: #ff4365;
+    color: #ffffff;
+    border-color: #ff4365;
+}
+
+/* Sections du carnet */
+.projets, .book {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+}
+
+.notebook {
+    flex: 1;
+    position: relative;             /* REPERE ABSOLU POUR LE CENTRE DU CARNET */
+    background: #ffffff;
+    border-radius: 0 8px 8px 8px;
+    border: 2px solid #e0e0e0;
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.08),
+        0 3px 10px rgba(0, 0, 0, 0.04);
+    min-height: 650px;
+    overflow: visible;              /* Permet au zoom de dépasser sans être coupé */
+    z-index: 1;
+}
+
+.notebook-spine {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: rgba(0, 0, 0, 0.06);
+    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.08);
+    pointer-events: none;
+    z-index: 5;
+}
+
+.project-spread {
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    min-height: 650px;
+}
+
+.project-spread.active {
+    display: grid;
+}
+
+.page {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 100%;
+}
+
+.page-left {
+    border-right: 1px dashed rgba(200, 215, 235, 0.6);
+}
+
+.project-header .project-year {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #999;
+}
+
+.project-title {
+    font-family: var(--font-bubble);
+    font-size: 2.4rem;
+    color: #222;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    margin-top: 4px;
+}
+
+/* ===================================================
+   3. GESTION DES MÉDIAS (YouTube, Ticolas, SOL Agency)
+   =================================================== */
+
+/* 1. Vidéos YouTube en 16:9 */
+.media-box {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #111;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.media-box iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+/* 2. Projet Ticolas'Home (Image + Lecteur Audio) */
+#p-ticolas-home .media-box {
+    position: static;
+    aspect-ratio: auto;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: none;
+    overflow: visible;
+}
+
+#p-ticolas-home .media-cover {
+    position: static;
+}
+
+#p-ticolas-home .media-cover img {
+    width: 100%;
+    height: auto;
+    max-height: 160px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+.audio-player-wrapper {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.audio-player-wrapper figcaption {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #444;
+}
+
+.audio-player-wrapper audio {
+    width: 100%;
+    height: 40px;
+}
+
+/* 3. Logo SOL Agency (Fit sans fond noir) */
+#p-sol-agency .media-box {
+    position: static;
+    aspect-ratio: auto;
+    background: #ffffff;
+    border: 1px solid #eee;
+    padding: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+}
+
+#p-sol-agency .media-box img {
+    position: static !important;
+    width: 100% !important;
+    max-width: 260px;
+    height: auto !important;
+    max-height: 120px;
+    object-fit: contain !important;
+    display: block;
+    margin: 0 auto;
+}
+
+/* ===================================================
+   4. POST-IT NOTA BENE & CHARTE GRAPHIQUE
+   =================================================== */
+
+.top-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.brand-board {
+    position: static;
+    flex: 1.2;
+    margin: 0;
+    background: #ffffff;
+    padding: 6px;
+    border-radius: 4px;
+    border: 1px solid #e8e8e8;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transform: rotate(-1.5deg);
+    overflow: visible;
+}
+
+.brand-board img {
+    width: 100%;
+    height: auto;
+    max-height: 280px;
+    object-fit: contain;
+    display: block;
+    border-radius: 2px;
+}
+
+/* Post-it carré pour TOUS les projets */
+.postit-caracteristiques {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    min-height: 220px;
+    aspect-ratio: 1 / 1;
+    background: #fff9d2;
+    border: 1px solid #fae69e;
+    padding: 16px;
+    border-radius: 2px 2px 8px 2px;
+    transform: rotate(-2deg);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+    margin: 10px 0 20px 0;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.top-row .postit-caracteristiques {
+    flex: 1;
+    margin: 0;
+    transform: rotate(2deg);
+}
+
+.postit-caracteristiques .tape {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(2deg);
+    width: 48px;
+    height: 18px;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px dashed rgba(180, 180, 180, 0.4);
+}
+
+.postit-caracteristiques h3 {
+    font-family: var(--font-bubble);
+    font-size: 1.1rem;
+    color: #cc1e42;
+    margin-bottom: 6px;
+    line-height: 1.1;
+}
+
+.postit-caracteristiques .meta-tags {
+    font-size: 0.78rem;
+    line-height: 1.35;
+    color: #444;
+}
+
+/* Textes & Listes */
+.summary-text, .description {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: #444;
+    word-break: break-word;
+}
+
+.skills-list {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.skills-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 6px;
+    font-size: 0.92rem;
+    color: #444;
+}
+
+.skills-list li::before {
+    content: '|';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: 800;
+}
+
+/* Galerie & Vignettes de croquis / stickers */
+.gallery-stickers {
+    display: flex;
+    gap: 15px;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.gallery-stickers .sticker {
+    position: static;
+    flex: 1;
+    border: 1px solid #ddd;
+    padding: 6px;
+    background: #fafafa;
+    transform: rotate(-2deg);
+    overflow: visible;
+}
+
+.gallery-stickers .sticker:nth-child(2) {
+    transform: rotate(2deg);
+}
+
+.gallery-stickers img {
+    width: 100%;
+    height: 90px;
+    object-fit: cover;
+    display: block;
+}
+
+.btn-external {
+    display: inline-block;
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-top: auto;
+    transition: transform 0.2s ease;
+}
+
+.btn-external:hover {
+    transform: translateX(4px);
+}
+
+/* ===================================================
+   5. INTERCALAIRES LATÉRAUX
+   =================================================== */
+
+.notebook-binder-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 46px;
+    padding-top: 25px;
+}
+
+.tab-binder {
+    background: #f7f7f7;
+    border: 2px solid #e0e0e0;
+    border-left: none;
+    padding: 16px 6px;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    font-family: var(--font-ui);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #666;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    margin-left: -2px;
+    transition: all 0.2s ease;
+}
+
+.tab-binder:hover {
+    background: #ffe3e8;
+    color: var(--color-primary);
+}
+
+.tab-binder.active {
+    background: var(--color-primary);
+    color: #ffffff;
+    border-color: var(--color-primary-dark);
+    padding-left: 12px;
+    box-shadow: 2px 2px 6px rgba(255, 67, 101, 0.2);
+}
+
+/* ===================================================
+   6. GRILLE DES ADS (SOL Agency)
+   =================================================== */
+
+.ads-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin: 10px 0 16px 0;
+    padding: 10px;
+    background: #fdfefe;
+    border: 1px dashed #d8e2ec;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.ad-item {
+    position: static;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    padding: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-in;
+    transition: border-color 0.2s ease;
+}
+
+.ad-item:hover {
+    border-color: var(--color-primary);
+}
+
+.ad-item img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain !important;
+    display: block;
+}
+
+/* 1. Mégabannière tout en haut */
+.ad-leaderboard {
+    width: 100%;
+    height: 70px;
+}
+.ad-leaderboard img {
+    max-height: 58px;
+    width: 100%;
+}
+
+/* 2. Ligne centrale : Skyscraper à gauche + colonne droite */
+.ads-grid-row {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    align-items: stretch;
+}
+
+/* Le Skyscraper haut et fin */
+.ad-skyscraper {
+    flex: 0 0 95px;
+    height: 230px;
+}
+.ad-skyscraper img {
+    max-height: 218px;
+    width: auto;
+}
+
+/* Colonne pour les 3 autres formats */
+.ads-subcol {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ads-subcol .ad-item {
+    flex: 1;
+    height: 70px;
+}
+.ads-subcol .ad-item img {
+    max-height: 56px;
+}
+
+/* Mini badge */
+.ad-badge {
+    position: absolute;
+    margin-top: 40px;
+    margin-left: 60px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #888;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1px 4px;
+    border-radius: 2px;
+    pointer-events: none;
+    line-height: 1;
+}
+
+.ad-item:hover .ad-badge {
+    opacity: 0;
+}
+
+/* ===================================================
+  ZOOM UNIVERSEL SURVOL - SECTION PROJETS 
+   (S'ouvre au centre mathématique du carnet .notebook)
+   =================================================== */
+
+#projets .media-box img,
+#projets .brand-board img,
+#projets .gallery-stickers img,
+#projets .ads-showcase img {
+    cursor: zoom-in;
+    transition: transform 0.2s ease;
+}
+
+#projets .brand-board {
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#projets .brand-board img {
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
+}
+
+/* 🌟 POPUP CENTRÉE AU MILIEU DU CARNET 🌟 */
+.notebook-zoom-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    background: #ffffff;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+    display: none;
+    max-width: min(50%, 85%);
+    max-height: min(75%, 85%);
+}
+
+.notebook-zoom-overlay img {
+    display: block;
+    max-width: 100%;
+    max-height: 480px;
+    object-fit: contain;
+}
+
+/*postit + texte*/
+.top-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+/* Le post-it conserve sa taille carrée */
+.top-row .postit-caracteristiques {
+    flex-shrink: 0;
+    margin: 0;
+}
+
+/* Le texte prend toute la largeur restante */
+.top-row .section-block {
+    flex: 1;
+}
+
+/* ===================================================
+   MOODBOARD / PLANCHE DE CASES BD (SECTION BOOK)
+   =================================================== */
+
+.book-title {
+    font-family: var(--font-bubble);
+    font-size: 2rem;
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.book-banner img {
+    width: 100%;
+    max-height: 140px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+/* Grille inspirée de la référence (3 colonnes x 3 rangées) */
+/* Définition propre : 3 colonnes et 3 rangées harmonisées */
+/* Grille : on donne une vraie hauteur à la rangée du bas pour accueillir les affiches */
+.moodboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.1fr;
+    grid-template-rows: 160px 420px; /* Rangée 1 : bannière | Rangée 2 : les affiches + statue */
+    gap: 16px;
+    width: 100%;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+
+/* 1. Bannière fruits en haut à gauche */
+.panel-top-left {
+    grid-column: 1 / 3;
+    grid-row: 1;
+}
+
+/* 2. Statue à droite qui descend sur toute la hauteur */
+.panel-top-right {
+    grid-column: 3;
+    grid-row: 1 / 3;
+}
+
+/* 3. Affiche MMI (fond noir) */
+.panel-mid-left {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+/* 4. Affiche Elbeuf */
+.panel-mid-center {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+/* ANTI-CROP : Affichage intégral de toutes les images sans coupe */
+.panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.panel img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain !important; /* EMPÊCHE LE ROGNAGE : l'affiche rentre à 100% dans son cadre */
+    display: block;
+}
+
+/* Seule la bannière du haut remplit toute sa largeur */
+.panel-top-left img {
+    object-fit: cover !important;
+}
+/* Style de chaque case / panel */
+.panel {
+    position: relative;
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.panel:hover {
+    transform: translateY(-3px) scale(1.01);
+    border-color: var(--color-primary);
+    box-shadow: 0 10px 22px rgba(255, 67, 101, 0.15);
+    z-index: 2;
+}
+
+.panel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* Adaptation écran réduit */
+@media (max-width: 768px) {
+    .moodboard-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .panel-top-left,
+    .panel-top-right,
+    .panel-mid-left,
+    .panel-mid-center,
+    .panel-bottom-left,
+    .panel-bottom-right {
+        grid-column: auto;
+        grid-row: auto;
+        height: 200px;
+    }
+}
+
+/* ===================================================
+   8. FOOTER
+   =================================================== */
+
+footer {
+    background-color: var(--light-blue, #f5f8fa);
+    padding: 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--dark-blue, #222);
+}
+
+footer a {
+    color: inherit;
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    opacity: 1;
+}
+
+/* ===================================================
+   9. RESPONSIVE
+   =================================================== */
+
+@media (max-width: 900px) {
+    .hero {
+        flex-direction: column-reverse;
+        padding: 40px 20px;
+        gap: 30px;
+    }
+
+    .onglets {
+        width: 100%;
+    }
+
+    .projets, .book {
+        flex-direction: column;
+    }
+
+    .notebook-binder-tabs {
+        width: 100%;
+        flex-direction: row;
+        padding-top: 10px;
+    }
+
+    .tab-binder {
+        writing-mode: horizontal-tb;
+        border-radius: 6px;
+        border: 2px solid #e0e0e0;
+        margin-left: 0;
+    }
+
+    .project-spread {
+        grid-template-columns: 1fr;
+    }
+
+    .notebook-spine {
+        display: none;
+    }
+
+    #projets .media-cover:hover img,
+    #projets .brand-board:hover img,
+    #projets .gallery-stickers .sticker:hover img,
+    #projets .ads-showcase .ad-item:hover img {
+        max-width: 90vw !important;
+    }
+
+    footer {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1.5rem 4rem;
+    }
+}
